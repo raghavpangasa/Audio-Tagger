@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Details</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">	<style type="text/css" src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"></style>
+	<link href="https://fonts.googleapis.com/css?family=Signika" rel="stsylesheet">
+
+</head>
+
+<style type="text/css">
+
+		.navbar-brand{
+			font-family: 'Signika', sans-serif;
+		}
+
+		body{
+			background: url(https://images.unsplash.com/photo-1504309347377-f6d523251377?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=206086961d95cb151d79d324ab57153c&auto=format&fit=crop&w=1050&q=80);
+			background-size: cover;
+			background-position: 0 0px;
+			background-repeat: no-repeat;
+		}
+
+		#tablediv{
+			margin: auto;
+			width: 85%;
+			height: 400px;
+			overflow-x: auto;
+		}
+
+		#table{
+			margin: auto;
+			margin-top: 100px;
+			margin-right: 50px;
+			border: 1px solid white;
+		}
+
+		#res{
+			margin-left: auto;
+			margin-top: 100px;
+			font-size: 35px;
+			padding-left: 20px;
+			font-color : white;
+		}
+		.fam_result{
+			width: auto;
+			padding: 1px;
+			margin: auto;
+			margin-top: 50px;
+			text-align: center;
+			font-size: 35px;
+			border-radius: 15px;
+			background: #FF512F;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
+
+</style>
+
+
+<body>
+
+	<nav class="navbar navbar-light bg-light">
+  		<a class="navbar-brand" href="home">
+    		<img src="http://127.0.0.1:8887/templates/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    		Audio Tagger
+  		</a>
+	</nav>
+<!-- 	<div id="tablediv">
+	<table class="table table-striped" id="table">
+	  <tbody>
+	  	<tr id="fam_row">
+	  		<th scope="col">Family</th>
+	  	</tr>
+	  	<tr id="inst_row">
+	  		<th scope="col">Instrument</th>
+	  	</tr>
+	    <tr id="note_row">
+	      <th scope="col">Note</th>
+	    </tr>
+	    <tr id="vel_row">
+	      <th scope="col">Velocity</th>
+	  </tbody>
+	</table> 
+	</div> -->
+<!-- 	<div class="genre_result">Genre: <span id="genre">{{ pitch_results }}</span></div>
+ -->
+ <div class="fam_result" id="res">
+ 	Notes : 
+	{% for pitch in pitch_results %} 
+		<p>{{ pitch }}</p>
+	{% endfor %}
+	Velocity : 
+	{% for vel in velocity_results %} 
+		<p>{{ vel }}</p>
+	{% endfor %}
+</div>
+<!-- 	<div class="genre_result">Genre: <span id="genre">{{ velocity_results }}</span></div>
+ -->
+	<script type="text/javascript">
+
+		var instruments = ["ins1", "ins2", "ins4","ins1", "ins2", "ins4","ins1", "ins2", "ins4","ins1", "ins2", "ins4","ins1", "ins2", "ins4","ins1", "ins2", "ins4","ins1", "ins2", "ins4",]
+		var families = ["acoustic","synthetic","electronic","acoustic","synthetic","electronic","acoustic","synthetic","electronic","acoustic","synthetic","electronic","acoustic","synthetic","electronic","acoustic","synthetic","electronic","acoustic","synthetic","electronic"]
+		var notes = ['N1', 'N2', 'N3', 'N1', 'N2', 'N3', 'N1', 'N2', 'N3', 'N1', 'N2', 'N3', 'N1', 'N2', 'N3', 'N1', 'N2', 'N3', 'N1', 'N2', 'N3'];
+		var velocities = [25,50,75,100,127,25,25,50,75,100,127,25,25,50,75,100,127,25,25,50,75,100,127,25,75];
+
+		var notes = '{{pitch_results}}'
+		var velocities = '{{velocity_results}}'
+
+		var table = document.getElementById("table");
+		var note_row = document.getElementById("note_row");
+		var vel_row = document.getElementById("vel_row");
+		var fam_row = document.getElementById("fam_row");
+		var inst_row = document.getElementById("inst_row");
+
+		for (var i = 0 ; i < instruments.length; i++) {
+     		var cell = inst_row.insertCell(i+1);
+     		cell.innerHTML = instruments[i];
+     	}		
+
+		for (var i = 0 ; i < notes.length; i++) {
+     		var cell = fam_row.insertCell(i+1);
+     		cell.innerHTML = families[i];
+     	}
+
+		for (var i = 0 ; i < notes.length; i++) {
+     		var cell = note_row.insertCell(i+1);
+     		cell.innerHTML = notes[i];
+     	}
+
+		for (var i = 0 ; i < notes.length; i++) {
+     		var cell = vel_row.insertCell(i+1);
+     		cell.innerHTML = velocities[i];
+     	}
+
+
+
+	</script>
+
+</body>
+</html>

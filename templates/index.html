@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Instrument Tagger</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">	<style type="text/css" src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"></style>
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+
+
+	<style type="text/css">
+		body{
+			background-image: url(https://images.unsplash.com/photo-1488376739361-ed24c9beb6d0?auto=format&fit=crop&w=1055&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
+			background-size: cover;
+			background-position: 0 0px;
+			background-repeat: no-repeat;
+			font-family: Lato;
+			color: white;
+		}
+
+		.custom-file-input {
+    		position: relative;
+    		display: inline-block;
+    		width: 500px;
+    		height: calc(2.25rem + 2px);
+    		margin-bottom: 0;
+    		margin: 0;
+    		opacity: 1;
+}
+
+		#upload{
+			width: 500px;
+			padding: 2px;
+			align-items: center;
+			align-content: center;
+			border: 1px solid white;
+		}
+
+		.navbar-brand{
+			font-family: 'Signika', sans-serif;
+		}
+
+		#content{
+			text-align: center;
+			align-content: center;
+			padding-top: 20%;
+			text-shadow:	0px 4px 3px rgba(0,0,0,0.4),
+							0px 8px 13px rgba(0,0,0,0.1),
+							0px 18px 23px rgba(0,0,0,0.1);
+		}
+
+		h1{
+			font-weight: 700;
+			font-size: 5em;
+		}
+
+		html{
+			height: 100%;
+		}
+
+		hr{
+			width: 400px;
+			border-top: 1px solid #f8f8f8;
+			border-bottom: 1px solid rgba(0,0,0,0.2);
+		}	
+		
+		.loader {
+			display: none;
+		    border: 16px solid #f3f3f3; /* Light grey */
+		    border-top: 16px solid #3498db; /* Blue */
+		    border-radius: 50%;
+		    width: 120px;
+		    height: 120px;
+		    margin: auto;
+		    margin-top: 20px;
+		    animation: spin 2s linear infinite;
+		}
+
+		@keyframes spin {
+		    0% { transform: rotate(0deg); }
+		    100% { transform: rotate(360deg); }
+		}
+
+
+
+		#submit{
+			color: black;
+			background:white;
+		}
+	</style>
+	<script type="text/javascript">
+		function shownow(){
+			var y = document.getElementById("show");
+			y.style.display = "block";
+		};
+	</script>
+
+
+
+</head>
+
+
+<body>
+	<main>
+		<nav class="navbar navbar-light bg-light">
+	  		<a class="navbar-brand" href="home">
+	    		<img src="http://127.0.0.1:8887/templates/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+	    		Audio Tagger
+	  		</a>
+		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="content">
+						<h1>Audio Tagger</h1>
+						<h3>Upload your audio file here!</h3>
+						<hr>
+						<form method="POST" enctype="multipart/form-data" action = 'http://localhost:5000/uploader'>
+
+	  						<label class="custom-file">
+	  							<input id = "upload" type="file" class="form-control-file custom-file-input" name="file" value = "sound" accept="audio/wav">
+	  							<span class="custom-file-control"></span>
+							</label>
+	                        <br>
+	                        <br>
+	                        <input id="submit" class="btn btn-light" value="LET'S GOOO" type="submit" onclick="shownow()">
+
+						</form>
+					</div>
+					<div class="loader" id="show"></div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Wave</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">	<style type="text/css" src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"></style>
+	<link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/2.0.5/wavesurfer.min.js"></script>
+
+
+	<style type="text/css">
+
+		body{
+			background: url(https://images.unsplash.com/photo-1504309347377-f6d523251377?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=206086961d95cb151d79d324ab57153c&auto=format&fit=crop&w=1050&q=80);
+			background-size: cover;
+			background-position: 0 0px;
+			background-repeat: no-repeat;
+		}
+		.navbar-brand{
+			font-family: 'Signika', sans-serif;
+		}
+
+		#s{
+			margin-left: 675px;
+			margin-bottom: auto;
+			margin-top: 50px;
+		}
+
+		#container{
+			width: 500px;
+			margin-right: auto;
+			margin-left: auto;
+			margin-bottom: auto;
+			margin-top: 50px;
+		}
+		.fam_result{
+			width: auto;
+			padding: 1px;
+			margin: auto;
+			margin-top: 50px;
+			text-align: center;
+			font-size: 35px;
+			border-radius: 15px;
+			background: #FF512F;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
+
+		.inst_result{
+			width: auto;
+			padding: 1px;
+			margin: auto;
+			margin-top: 50px;
+			text-align: center;
+			font-size: 35px;
+			border-radius: 15px;
+			background: #FF512F;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+
+		.genre_result{
+			width: auto;
+			padding: 1px;
+			margin: auto;
+			margin-top: 50px;
+			text-align: center;
+			font-size: 35px;
+			border-radius: 15px;
+			background: #E55D87;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #5FC3E4, #E55D87); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+
+		.row{
+			width: 1200px;
+			margin: auto;
+			margin-top: 20px;
+			padding: 20px;
+		}
+
+		.card{
+			background: #ffe259;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #ffa751, #ffe259); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			border: none;
+			margin: auto;
+			width: 600px;
+		}
+
+		#goto{
+			background: #1488CC;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			border-radius: 10px;
+			border: none;
+		}
+
+	</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-light bg-light">
+  		<a class="navbar-brand" href="home">
+    		<img src="http://127.0.0.1:8887/templates/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    		Audio Tagger
+  		</a>
+	</nav>
+
+	<div id="s">
+		<input class="btn btn-primary" id="button1" type="button" value="Play">
+		<input class="btn btn-primary" id="button2" type="submit" value="Pause">
+	</div>
+
+	<div id="container" name="waveform" class="waveform" id="waveform"></div>
+
+    <div class="fam_result">The type of instruments present are: {{type_result}}</div>
+	<div class="inst_result">The instruments present could be: {{family_result}}</div>
+	<div class="genre_result">Genre: <span id="genre">{{ result2 }}</span></div>
+
+
+	<div class="row">
+	  <div class="col-sm-12">
+	    <div class="card text-center">
+	      <div class="card-body">
+	        <h5 class="card-title">Back to Home Page</h5>
+	        <p class="card-text">Upload another audio file.</p>
+	        <a href="home" class="btn btn-primary" id="goto">Click Here!</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="row">
+	  <div class="col-sm-12">
+	    <div class="card text-center">
+	      <div class="card-body">
+	        <h5 class="card-title">Get more deatils</h5>
+	        <a href="details" class="btn btn-primary" id="goto">Click Here!</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<script type="text/javascript">
+		var r1 = {{ result1|tojson}}	
+		var aud ='{{ filen }}'
+		aud = 'http://127.0.0.1:8887/music/' + aud;
+
+
+
+		var play = document.getElementById("button1");
+		var pause = document.getElementById("button2");
+
+		var wavesurfer = WaveSurfer.create({
+    		container: '.waveform',
+    		waveColor: 'cyan',
+    		progressColor: 'violet'
+		});
+		wavesurfer.load(aud);
+
+		play.addEventListener("click", function(){
+			var text = r1;	
+			var counter = 0;
+   			wavesurfer.play();			
+		});
+		pause.addEventListener("click", function(){
+   			wavesurfer.pause();			
+		});
+	</script>
+</body>
+</html>
